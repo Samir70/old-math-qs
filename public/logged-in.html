@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Qs</title>
+</head>
+<!-- update the version number as needed -->
+<script src="/__/firebase/8.6.8/firebase-app.js"></script>
+<!-- include only the Firebase features as you need -->
+<script src="/__/firebase/8.6.8/firebase-analytics.js"></script>
+<script src="/__/firebase/8.6.8/firebase-auth.js"></script>
+<script src="/__/firebase/init.js?useEmulator=true"></script>
+
+<body>
+    <h1>Math Qs</h1>
+    <div>
+        <p>Learn maths the best way: by solving questions that get gradually harder.</p>
+    </div>
+    <script>
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                document.body.innerHTML += '<h1>Welcome, '+user.displayName+',you have logged into Math Qs!</h1>' + '<p>Your email is:'+user.email+'</p>'
+            } else {
+                document.body.innerHTML += '<h1>Sorry, '+user.displayName+',you are not logged into Math Qs!</h1>' + '<a href="./index.html">Go to login page</a>'
+            }
+        })
+    </script>
+</body>
+</html>
