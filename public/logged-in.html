@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,20 +13,41 @@
 <script src="/__/firebase/8.6.8/firebase-analytics.js"></script>
 <script src="/__/firebase/8.6.8/firebase-auth.js"></script>
 <script src="/__/firebase/init.js?useEmulator=true"></script>
+<style>
+    .hide {
+        display: none;
+    }
+</style>
 
 <body>
     <h1>Math Qs</h1>
     <div>
         <p>Learn maths the best way: by solving questions that get gradually harder.</p>
     </div>
+    <div id="login-status"></div>
+    <button id="btn-logout" class="btn hide" >Logout</button>
+    <div id="user-details"></div>
     <script>
+        const btnLogout = document.getElementById("btn-logout");
+        const loginStatus = document.getElementById("login-status");
+        const userDetails = document.getElementById("user-details");
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
-                document.body.innerHTML += '<h1>Welcome, '+user.displayName+',you have logged into Math Qs!</h1>' + '<p>Your email is:'+user.email+'</p>'
+                btnLogout.classList.remove('hide')
+                btnLogout.addEventListener("click", e => {
+                    firebase.auth().signOut();
+                });
+                loginStatus.innerHTML = '<h1>Welcome, ' + (user.displayName || 'Guest') 
+                    + ', you have logged into Math Qs!</h1>' + '<p>Your email is:' + user.email + '</p>'
+                    + '<p>keys in user object (google): '+JSON.stringify(Object.keys(user))+'</p>'
+                    // + '<img src="'+user.photoURL+'" >'
+                userDetails.innerHTML = JSON.stringify(user)
             } else {
-                document.body.innerHTML += '<h1>Sorry, '+user.displayName+',you are not logged into Math Qs!</h1>' + '<a href="./index.html">Go to login page</a>'
+                btnLogout.classList.add('hide')
+                loginStatus.innerHTML = '<h1>You are not logged into Math Qs!</h1>' + '<a href="./index.html">Go to login page</a>'
             }
         })
     </script>
 </body>
+
 </html>
