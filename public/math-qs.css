@@ -5,3 +5,22 @@ body {
 .hide {
     display:none;
 }
+
+.course-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.course-card {
+    display:block;
+    width: 40vw;
+    margin: 5px 5px;
+    flex: 0 0 auto;
+    border: 2px solid darkcyan;
+    box-shadow: 1px 2px 2px darkgray;
+}
+.course-card:hover {
+    background: lightblue;
+    box-shadow: 3px 5px 5px darkgray;
+}

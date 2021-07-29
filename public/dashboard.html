@@ -25,15 +25,14 @@
     <div id="login-status"></div>
     <button id="btn-logout" class="btn hide" >Logout</button>
     <div id="user-details"></div>
-    <div id="user-data" class="hide">
-        <ul>
-            <li v-for="course of curriculum">{{course.courseName}} has {{course.topics.length}} topics</li>
-        </ul>
+    <div id="user-data" class="hide course-list">
+        <course-card v-for="course of curriculum" v-bind:course-data="course" v-bind:key="course.courseName" />
     </div>
     <script src="./Curriculum/algebra.js"></script>
     <script src="./Curriculum/data.js"></script>
     <script src="./Curriculum/number.js"></script>
     <script src="./Curriculum/curriculum.js"></script>
+    <script src="./Components/courseCard.js"></script>
     <script>
         const btnLogout = document.getElementById("btn-logout");
         const loginStatus = document.getElementById("login-status");
