@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math Qs</title>
-    <link rel="stylesheet" href="./math-qs.css" >
+    <link rel="stylesheet" href="./math-qs.css">
 </head>
 <!-- update the version number as needed -->
 <script src="/__/firebase/8.6.8/firebase-app.js"></script>
@@ -17,14 +17,25 @@
 
 <body>
     <h1>Math Qs</h1>
-    <div>
-        <p>Learn maths the best way: by solving questions that get gradually harder.</p>
-        <p>Develop your own understanding. Invent and discover your own maths.</p>
-    </div>
+    <h2>Develop your own understanding. <br> Invent and discover your own maths.</h2>
     <div id="login-status"></div>
-    <button id="btn-logout" class="btn hide" >Logout</button>
-    <button id="btn-dashboard" class="btn hide" >Go To Dashboard</button>
+    <button id="btn-logout" class="btn hide">Logout</button>
+    <button id="btn-dashboard" class="btn hide">Go To Dashboard</button>
     <div id="user-details"></div>
+    <div>
+        <p>As a maths teacher it often struck me that, every time we had to actually give a lesson on Pythagoras or
+            trigonometry, it was because the students didn't understand formulas. </p>
+        <p>In that case, they should be learning about formulas (how to substitute values, how to rearrange formulas,
+            ...) rather than memorising step by step instructions on how to solve questions. Those step by step
+            instructions are difficult to remember, get all mixed up with a 1000 other things learnt by rote and put a
+            barrier between students and real maths -- even if they pass exams.</p>
+        <p>On the other hand: for students who do understand formulas... A picture and a labeled diagram should be
+            enough</p>
+        <img src="./Images/520px-Pythagorean.svg.png" alt="Picture for Pythagoras' theorem" height="150" width="150">
+        <p>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></p>
+        <p>All the instructions you need are in that formula! So, if you are stuck on Pythagoras: learn about formulas.
+            <br> That's the philosophy behind this website.</p>
+    </div>
     <script>
         const btnLogout = document.getElementById("btn-logout");
         const btnDashBoard = document.getElementById("btn-dashboard");
@@ -40,10 +51,9 @@
                 btnDashBoard.addEventListener("click", e => {
                     window.location.href = './dashboard.html'
                 });
-                loginStatus.innerHTML = '<h1>Welcome, ' + (user.displayName || 'Guest') 
+                loginStatus.innerHTML = '<h1>Welcome, ' + (user.displayName || 'Guest')
                     + ', you have logged into Math Qs!</h1>' + '<p>Your email is:' + user.email + '</p>'
-                    + '<p>keys in user object (google): '+JSON.stringify(Object.keys(user))+'</p>'
-                    // + '<img src="'+user.photoURL+'" >'
+                // + '<img src="'+user.photoURL+'" >'
                 // userDetails.innerHTML = JSON.stringify(user)
             } else {
                 btnLogout.classList.add('hide')
