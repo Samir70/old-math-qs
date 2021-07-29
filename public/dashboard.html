@@ -22,10 +22,12 @@
     <div>
         <p>Learn maths the best way: by solving questions that get gradually harder.</p>
     </div>
-    <div id="login-status"></div>
-    <button id="btn-logout" class="btn hide" >Logout</button>
-    <div id="user-details"></div>
+    <div id="user-ribbon">
+        <div id="login-status"></div>
+        <button id="btn-logout" class="btn hide" >Logout</button>
+    </div>
     <div id="user-data" class="hide course-list">
+        <!-- will eventually hold the user's progress data -->
         <course-card v-for="course of curriculum" v-bind:course-data="course" v-bind:key="course.courseName" />
     </div>
     <script src="./Curriculum/algebra.js"></script>
@@ -36,7 +38,6 @@
     <script>
         const btnLogout = document.getElementById("btn-logout");
         const loginStatus = document.getElementById("login-status");
-        const userDetails = document.getElementById("user-details");
         const userData = document.getElementById('user-data');
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
@@ -45,8 +46,7 @@
                 btnLogout.addEventListener("click", e => {
                     firebase.auth().signOut();
                 });
-                loginStatus.innerHTML = '<h1>Welcome, ' + (user.displayName || 'Guest') 
-                    + ', you have logged into Math Qs!</h1>' + '<p>Your email is:' + user.email + '</p>'
+                loginStatus.innerHTML = '<h2>You are logged in as ' + (user.displayName || 'Guest</h2>') 
                 var mathQs = new Vue({
                     el: '#user-data', 
                     data: {
@@ -56,7 +56,7 @@
             } else {
                 window.location.href = './login.html'
                 btnLogout.classList.add('hide')
-                loginStatus.innerHTML = '<h1>You are not logged into Math Qs!</h1>' + '<a href="./login.html">Go to login page</a>'
+                loginStatus.innerHTML = '<h3>You are not logged into Math Qs!</h3>' + '<a href="./login.html">Go to login page</a>'
             }
         })
     </script>

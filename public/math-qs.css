@@ -1,9 +1,23 @@
 body {
     text-align: center;
+    background: hsl(196, 68%, 90%);
 }
 
-.hide {
-    display:none;
+#user-ribbon {
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
+    position:sticky;
+    top: 2px;
+    background: lightblue;
+    width: 84vw;
+}
+#btn-logout {
+    font-size: large;
+    background: rgb(96, 96, 245);
+    color: white;
+    height: 40px;
 }
 
 .course-list {
@@ -15,7 +29,7 @@ body {
 .course-card {
     display:block;
     width: 40vw;
-    margin: 5px 5px;
+    margin: 1vw;
     flex: 0 0 auto;
     border: 2px solid darkcyan;
     box-shadow: 1px 2px 2px darkgray;
@@ -23,4 +37,7 @@ body {
 .course-card:hover {
     background: lightblue;
     box-shadow: 3px 5px 5px darkgray;
+}
+.hide {
+    display:none;
 }
