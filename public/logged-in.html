@@ -41,7 +41,7 @@
                     + ', you have logged into Math Qs!</h1>' + '<p>Your email is:' + user.email + '</p>'
                     + '<p>keys in user object (google): '+JSON.stringify(Object.keys(user))+'</p>'
                     // + '<img src="'+user.photoURL+'" >'
-                userDetails.innerHTML = JSON.stringify(user)
+                // userDetails.innerHTML = JSON.stringify(user)
             } else {
                 btnLogout.classList.add('hide')
                 loginStatus.innerHTML = '<h1>You are not logged into Math Qs!</h1>' + '<a href="./index.html">Go to login page</a>'
