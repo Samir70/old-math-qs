@@ -6,6 +6,7 @@ This project started as my maths-elo project, which would display random questio
 If you want to run your own fork locally, you will have to install firebase then use your own firebase account. Serve the page locally with 
 
 > firebase serve
+
 and push to your own firebase account with
 
 > firebase deploy
