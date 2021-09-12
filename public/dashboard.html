@@ -28,7 +28,16 @@
     </div>
     <div id="user-data" class="hide course-list">
         <!-- will eventually hold the user's progress data -->
-        <course-card v-for="course of curriculum" v-bind:course-data="course" v-bind:key="course.courseName" />
+        <div v-if="showOneCourse">
+            <h1>{{chosenCourse}}</h1>
+            <p v-for="topic of topicList">{{topic.topic}}</p>
+            <button v-on:click="unSelectCourse">Back to course list</button>
+        </div>
+        <course-card v-for="course of curriculum" 
+            v-if="showAllCourses" 
+            v-bind:course-data="course" 
+            v-bind:key="course.courseName"
+            v-on:course-chosen="chooseCourse" />
     </div>
     <script src="./Curriculum/algebra.js"></script>
     <script src="./Curriculum/data.js"></script>
@@ -50,7 +59,22 @@
                 var mathQs = new Vue({
                     el: '#user-data', 
                     data: {
-                        curriculum
+                        curriculum, 
+                        showAllCourses: true, showOneCourse: false,
+                        chosenCourse: 'none',
+                        topicList: []
+                    },
+                    methods: {
+                        chooseCourse: function(course) {
+                            this.showAllCourses = false;
+                            this.showOneCourse = true;
+                            this.chosenCourse = course.courseName;
+                            this.topicList = course.topics;
+                        },
+                        unSelectCourse: function(course) {
+                            this.showAllCourses = true;
+                            this.showOneCourse = false;
+                        }
                     }
                 })
             } else {
