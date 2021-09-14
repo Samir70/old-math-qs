@@ -1,6 +1,6 @@
 const data = [
-    { topic: 'Mean', qtags: [{ qTag: 'dummyQ', levels: 0 }] },
-    { topic: 'Range', qtags: [{ qTag: 'dummyQ', levels: 0 }] },
-    { topic: 'Medium', qtags: [{ qTag: 'dummyQ', levels: 0 }] },
-    { topic: 'Mode', qtags: [{ qTag: 'dummyQ', levels: 0 }] }
+    { topic: 'Mean', qTags: [{ qTag: 'dummyQ', levels: 0 }] },
+    { topic: 'Range', qTags: [{ qTag: 'dummyQ', levels: 0 }] },
+    { topic: 'Medium', qTags: [{ qTag: 'dummyQ', levels: 0 }] },
+    { topic: 'Mode', qTags: [{ qTag: 'dummyQ', levels: 0 }] }
 ]
