@@ -30,8 +30,9 @@
         <!-- will eventually hold the user's progress data -->
         <div v-if="showOneCourse">
             <h1>{{chosenCourse}}</h1>
-            <p v-for="topic of topicList">{{topic.topic}}</p>
             <button v-on:click="unSelectCourse">Back to course list</button>
+            <!-- <p v-for="topic of topicList">{{topic.topic}}</p> -->
+            <topic-list v-bind:topics="topicList" v-on:topic-chosen="chooseTopic" />
         </div>
         <course-card v-for="course of curriculum" 
             v-if="showAllCourses" 
@@ -44,6 +45,7 @@
     <script src="./Curriculum/number.js"></script>
     <script src="./Curriculum/curriculum.js"></script>
     <script src="./Components/courseCard.js"></script>
+    <script src="./Components/topicsList.js"></script>
     <script>
         const btnLogout = document.getElementById("btn-logout");
         const loginStatus = document.getElementById("login-status");
@@ -70,6 +72,9 @@
                             this.showOneCourse = true;
                             this.chosenCourse = course.courseName;
                             this.topicList = course.topics;
+                        },
+                        chooseTopic: function(topic) {
+                            console.log(topic.topic, topic.qTags[0].qTag, topic.qTags[0].levels)
                         },
                         unSelectCourse: function(course) {
                             this.showAllCourses = true;
